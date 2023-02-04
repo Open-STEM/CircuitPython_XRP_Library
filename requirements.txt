@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2017 Scott Shawcroft, written for Adafruit Industries
+# SPDX-FileCopyrightText: Copyright (c) 2023 Open STEM Authors for WPI
+#
+# SPDX-License-Identifier: MIT
+
+Adafruit-Blinka
+adafruit-circuitpython-busdevice
+adafruit-circuitpython-register
+
+types-circuitpython
+adafruit-circuitpython-neopixel
+adafruit-circuitpython-motor
+# adafruit-circuitpython-digitalio
+# adafruit-circuitpython-rotaryio
+# adafruit-circuitpython-analogio
+# adafruit-circuitpython-pwmio

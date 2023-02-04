@@ -13,6 +13,9 @@ def _isTimeout(startTime, timeout):
 # Encapsulates the left and right motor objects and provides high-level functionality to manipulate robot locomotion.
 
 class Drivetrain:
+    """
+    The drivetrain class ... todo
+    """
 
     def __init__(self, left_encoded_motor: _encoded_motor, right_encoded_motor: _encoded_motor): # wheelDiameter and wheelSpacing in cm
 

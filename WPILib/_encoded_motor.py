@@ -1,10 +1,10 @@
-from adafruit_motor import motor
-import pwmio
 import time
 from . import _encoder
 
 class EncodedMotor:
     def __init__(self, encoderPinA, encoderPinB , motorPin1, motorPin2, Name="Motor Unnamed", doFlip=False, ticksPerRev=288):
+        from adafruit_motor import motor
+        import pwmio
         
         self.name = Name
         self.encoder = _encoder.Encoder(pinA=encoderPinA, pinB=encoderPinB, ticksPerRev=ticksPerRev, doFlip=doFlip)

@@ -1,11 +1,10 @@
-import pwmio
 from adafruit_motor import servo
 import time
 
 class Servo:
 
     def __init__(self, servoPin, actuationRange: int):
-
+        import pwmio
         pwm = pwmio.PWMOut(servoPin, duty_cycle=2 ** 15, frequency=50)
         self._servo = servo.Servo(pwm)
         self._range = actuationRange

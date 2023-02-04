@@ -1,5 +1,3 @@
-from analogio import AnalogIn
-
 class AnalogReflectance:
 
     """
@@ -8,10 +6,12 @@ class AnalogReflectance:
     """
 
     def __init__(self, leftPin, rightPin):
+        from analogio import AnalogIn
         self._leftReflectance = AnalogIn(leftPin)
         self._rightReflectance = AnalogIn(rightPin)
 
-    def _get_value(self, sensor: AnalogIn) -> float:
+    def _get_value(self, sensor) -> float:
+    # def _get_value(self, sensor: AnalogIn) -> float:
         MAX_ANALOG_VALUE: int = 65535
         return sensor.value / MAX_ANALOG_VALUE
     

@@ -1,0 +1,70 @@
+# SPDX-FileCopyrightText: 2022 Alec Delaney, written for Adafruit Industries
+# SPDX-FileCopyrightText: Copyright (c) 2023 Open STEM Authors for WPI
+#
+# SPDX-License-Identifier: MIT
+
+# [build-system]
+# requires = [
+#     "setuptools",
+#     "wheel",
+#     "setuptools-scm",
+# ]
+
+[project]
+name = "circuitpython-xrp-library"
+description = "Library for programming XRP roobts"
+version = "0.0.0+auto.0"
+readme = "README.rst"
+authors = [
+    {name = "Adafruit Industries", email = "circuitpython@adafruit.com"}
+]
+urls = {Homepage = "https://github.com/Open-STEM/CircuitPython_XRP_Library"}
+keywords = [
+    "adafruit",
+    "blinka",
+    "circuitpython",
+    "micropython",
+    "xrp-library",
+]
+license = {text = "MIT"}
+classifiers = [
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Embedded Systems",
+    "Topic :: System :: Hardware",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools]
+# TODO: IF LIBRARY FILES ARE A PACKAGE FOLDER,
+#       CHANGE `py_modules = ['...']` TO `packages = ['...']`
+py-modules = ["xrp_library"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+optional-dependencies = {optional = {file = ["optional_requirements.txt"]}}
+
+[tool.poetry]
+name = "circuitpython-xrp-library"
+version = "0.1.0"
+description = ""
+authors = ["Alex Henning <alex@thoriumrobotics.com>"]
+readme = "README.md"
+packages = [{include = "circuitpython_xrp_library"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Sphinx = { version = "4.2.0", optional = true }
+sphinx-rtd-theme = { version = "1.0.0", optional = true }
+sphinxcontrib-napoleon = { version = "0.7", optional = true }
+
+[tool.poetry.extras]
+docs = ["Sphinx", "sphinx-rtd-theme", "sphinxcontrib-napoleon", "babel"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# adafruit-circuitpython-neopixel

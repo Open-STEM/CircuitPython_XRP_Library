@@ -1,8 +1,8 @@
-import neopixel
 
 class RGBLED:
 
     def __init__(self, pin):
+        import neopixel
         self._pixels = neopixel.NeoPixel(pin, 2)
         self._pixels.fill(0xFFFFFF)
         self._pixels.brightness = 0
@@ -30,7 +30,3 @@ class RGBLED:
         """
         brightness = min(1,max(0,brightness))
         self._pixels.brightness = brightness
-
-        
-    
-        
