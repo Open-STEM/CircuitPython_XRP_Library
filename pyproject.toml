@@ -3,12 +3,12 @@
 #
 # SPDX-License-Identifier: MIT
 
-# [build-system]
-# requires = [
-#     "setuptools",
-#     "wheel",
-#     "setuptools-scm",
-# ]
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+    "setuptools-scm",
+]
 
 [project]
 name = "circuitpython-xrp-library"
@@ -45,26 +45,3 @@ py-modules = ["xrp_library"]
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 optional-dependencies = {optional = {file = ["optional_requirements.txt"]}}
-
-[tool.poetry]
-name = "circuitpython-xrp-library"
-version = "0.1.0"
-description = ""
-authors = ["Alex Henning <alex@thoriumrobotics.com>"]
-readme = "README.md"
-packages = [{include = "circuitpython_xrp_library"}]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-Sphinx = { version = "4.2.0", optional = true }
-sphinx-rtd-theme = { version = "1.0.0", optional = true }
-sphinxcontrib-napoleon = { version = "0.7", optional = true }
-
-[tool.poetry.extras]
-docs = ["Sphinx", "sphinx-rtd-theme", "sphinxcontrib-napoleon", "babel"]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-# adafruit-circuitpython-neopixel
