@@ -5,4 +5,3 @@ from SampleCode.sample_miscellaneous import *
 from SampleCode.sample_sensor_access import *
 
 ivp()
-

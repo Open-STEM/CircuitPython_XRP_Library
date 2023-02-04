@@ -1,15 +1,27 @@
 import time
 from . import _encoder
 
+
 class EncodedMotor:
-    def __init__(self, encoderPinA, encoderPinB , motorPin1, motorPin2, Name="Motor Unnamed", doFlip=False, ticksPerRev=288):
+    def __init__(
+        self,
+        encoderPinA,
+        encoderPinB,
+        motorPin1,
+        motorPin2,
+        Name="Motor Unnamed",
+        doFlip=False,
+        ticksPerRev=288,
+    ):
         from adafruit_motor import motor
         import pwmio
-        
+
         self.name = Name
-        self.encoder = _encoder.Encoder(pinA=encoderPinA, pinB=encoderPinB, ticksPerRev=ticksPerRev, doFlip=doFlip)
+        self.encoder = _encoder.Encoder(
+            pinA=encoderPinA, pinB=encoderPinB, ticksPerRev=ticksPerRev, doFlip=doFlip
+        )
         self.flip = doFlip
-        
+
         MA = pwmio.PWMOut(motorPin1, frequency=10000)
         MB = pwmio.PWMOut(motorPin2, frequency=10000)
         if doFlip:
@@ -31,7 +43,9 @@ class EncodedMotor:
         if effort is None:
             self.motor.throttle = None
         else:
-            self.motor.throttle = min(1, max(-1, effort)) # bound effort between [-1, 1]
+            self.motor.throttle = min(
+                1, max(-1, effort)
+            )  # bound effort between [-1, 1]
 
     def getPos(self) -> float:
         return self.encoder.getPos()

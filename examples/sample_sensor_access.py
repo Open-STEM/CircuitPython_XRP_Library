@@ -16,6 +16,7 @@ def ultrasonic_test():
             pass
         time.sleep(0.1)
 
+
 # Approaches a wall at a set speed and then stops
 def drive_till_close(target_distance: float = 10.0):
     speed = 0.6
@@ -24,14 +25,16 @@ def drive_till_close(target_distance: float = 10.0):
         time.sleep(0.01)
     drivetrain.set_effort(0, 0)
 
+
 # Maintains a certain distance from the wall using proportional control
 def standoff(target_distance: float = 10.0):
     KP = 0.2
     while True:
         distance = sonar.get_distance()
         error = distance - target_distance
-        drivetrain.set_effort(error * KP, error*KP)
+        drivetrain.set_effort(error * KP, error * KP)
         time.sleep(0.01)
+
 
 # Maintains a certain distance from the wall while driving
 #     using proportional control (sensor on right side of robot this time)
@@ -42,8 +45,9 @@ def wall_follow(target_distance: float = 10.0):
         distance = sonar.get_distance()
         error = distance - target_distance
         print(error)
-        drivetrain.set_effort(base_speed + error * KP, base_speed - error*KP)
+        drivetrain.set_effort(base_speed + error * KP, base_speed - error * KP)
         time.sleep(0.01)
+
 
 # Follows a line using the line followers
 def line_track():

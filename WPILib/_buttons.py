@@ -1,8 +1,8 @@
 import board
 from digitalio import DigitalInOut, Direction, Pull
 
-class Buttons:
 
+class Buttons:
     def _createButton(self, buttonPin):
         btn = DigitalInOut(buttonPin)
         btn.direction = Direction.INPUT

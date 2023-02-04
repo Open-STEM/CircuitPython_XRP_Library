@@ -7,33 +7,37 @@ def _isTimeout(startTime, timeout):
 
     if timeout is None:
         return False
-    return time.time() >= startTime+timeout
+    return time.time() >= startTime + timeout
 
 
 # Encapsulates the left and right motor objects and provides high-level functionality to manipulate robot locomotion.
+
 
 class Drivetrain:
     """
     The drivetrain class ... todo
     """
 
-    def __init__(self, left_encoded_motor: _encoded_motor, right_encoded_motor: _encoded_motor): # wheelDiameter and wheelSpacing in cm
+    def __init__(
+        self, left_encoded_motor: _encoded_motor, right_encoded_motor: _encoded_motor
+    ):  # wheelDiameter and wheelSpacing in cm
 
         self.leftMotor = left_encoded_motor
         self.rightMotor = right_encoded_motor
 
-        self._LEGACY_DIAMETER: float = 6.5 # diameter of old robot wheel in cm
-        self._NEW_DIAMETER: float = 6.5 # diameter of new robot wheel in cm
+        self._LEGACY_DIAMETER: float = 6.5  # diameter of old robot wheel in cm
+        self._NEW_DIAMETER: float = 6.5  # diameter of new robot wheel in cm
 
-        self._LEGACY_WHEEL_SPACING: float = 16 # distance between old robot wheels in cm
-        self._NEW_WHEEL_SPACING: float = 13.5 # distance between new robot wheels in cm
-        
-        self._LEGACY_TICKS_PER_REV: int = 144 # distance between old robot wheels in cm
-        self._NEW_TICKS_PER_REV: int = 288 # distance between new robot wheels in cm
+        self._LEGACY_WHEEL_SPACING: float = (
+            16  # distance between old robot wheels in cm
+        )
+        self._NEW_WHEEL_SPACING: float = 13.5  # distance between new robot wheels in cm
+
+        self._LEGACY_TICKS_PER_REV: int = 144  # distance between old robot wheels in cm
+        self._NEW_TICKS_PER_REV: int = 288  # distance between new robot wheels in cm
 
         self.wheelDiameter = self._NEW_DIAMETER
         self.wheelSpacing = self._NEW_WHEEL_SPACING
-        
 
         self.set_encoder_position(0, 0)
 
@@ -77,7 +81,9 @@ class Drivetrain:
 
     # Go forward the specified distance in centimeters, and exit function when distance has been reached.
     # Speed is bounded from -1 (reverse at full speed) to 1 (forward at full speed)
-    def straight(self, distance: float, speed: float = 0.5, timeout: float = None) -> bool:
+    def straight(
+        self, distance: float, speed: float = 0.5, timeout: float = None
+    ) -> bool:
         """
         Go forward the specified distance in centimeters, and exit function when distance has been reached.
         Speed is bounded from -1 (reverse at full speed) to 1 (forward at full speed)
@@ -102,7 +108,7 @@ class Drivetrain:
 
         KP = 5
 
-        rotationsToDo = distance  / (self.wheelDiameter * math.pi)
+        rotationsToDo = distance / (self.wheelDiameter * math.pi)
 
         while True:
 
@@ -111,10 +117,13 @@ class Drivetrain:
             leftDelta = leftPosition - startingLeft
             rightDelta = rightPosition - startingRight
 
-            if _isTimeout(startTime, timeout) or abs(leftDelta + rightDelta)/2 >= rotationsToDo:
+            if (
+                _isTimeout(startTime, timeout)
+                or abs(leftDelta + rightDelta) / 2 >= rotationsToDo
+            ):
                 break
 
-            error = KP * (leftDelta - rightDelta) # positive if bearing right
+            error = KP * (leftDelta - rightDelta)  # positive if bearing right
 
             self.set_effort(speed - error, speed + error)
 
@@ -125,9 +134,11 @@ class Drivetrain:
         if timeout is None:
             return True
         else:
-            return time.time() < startTime+timeout
+            return time.time() < startTime + timeout
 
-    def turn(self, turn_degrees: float, speed: float = 0.5, timeout: float = None) -> bool:
+    def turn(
+        self, turn_degrees: float, speed: float = 0.5, timeout: float = None
+    ) -> bool:
         """
         Turn the robot some relative heading given in turnDegrees, and exit function when the robot has reached that heading.
         Speed is bounded from -1 (turn counterclockwise the relative heading at full speed) to 1 (turn clockwise the relative heading at full speed)
@@ -147,7 +158,7 @@ class Drivetrain:
             speed *= -1
             turn_degrees *= -1
 
-        rotationsToDo = (turn_degrees/360) * self.wheelSpacing / self.wheelDiameter
+        rotationsToDo = (turn_degrees / 360) * self.wheelSpacing / self.wheelDiameter
 
         startTime = time.time()
         startingLeft = self.get_left_encoder_position()
@@ -162,11 +173,14 @@ class Drivetrain:
             leftDelta = leftPosition - startingLeft
             rightDelta = rightPosition - startingRight
 
-            if _isTimeout(startTime, timeout) or abs(leftDelta - rightDelta)/2 >= rotationsToDo:
+            if (
+                _isTimeout(startTime, timeout)
+                or abs(leftDelta - rightDelta) / 2 >= rotationsToDo
+            ):
                 break
-        
+
             error = KP * (leftDelta + rightDelta)
-            
+
             self.set_effort(speed - error, -speed - error)
 
             time.sleep(0.01)
@@ -176,7 +190,7 @@ class Drivetrain:
         if timeout is None:
             return True
         else:
-            return time.time() < startTime+timeout
+            return time.time() < startTime + timeout
 
     def set_effort(self, left_effort: float, right_effort: float) -> None:
         """
@@ -195,7 +209,7 @@ class Drivetrain:
         """
         Stops both drivetrain motors
         """
-        self.set_effort(0,0)
+        self.set_effort(0, 0)
 
     def set_encoder_position(self, left_degrees: float, right_degrees: float) -> None:
         """

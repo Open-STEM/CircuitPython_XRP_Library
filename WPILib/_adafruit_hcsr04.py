@@ -45,6 +45,7 @@ except:
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_HCSR04.git"
 
+
 class AdafruitUltrasonic:
     """Control a HC-SR04 ultrasonic range sensor.
 
@@ -143,7 +144,7 @@ class AdafruitUltrasonic:
                 # Wait for a pulse
                 if (time.monotonic() - timestamp) > self._timeout:
                     self._echo.pause()
-                    #raise RuntimeError("Timed out")
+                    # raise RuntimeError("Timed out")
                     return self.MAX_VALUE
             self._echo.pause()
             pulselen = self._echo[0]
@@ -152,18 +153,18 @@ class AdafruitUltrasonic:
             # hang out while the pin is low
             while not self._echo.value:
                 if time.monotonic() - timestamp > self._timeout:
-                    #raise RuntimeError("Timed out")
+                    # raise RuntimeError("Timed out")
                     return self.MAX_VALUE
             timestamp = time.monotonic()
             # track how long pin is high
             while self._echo.value:
                 if time.monotonic() - timestamp > self._timeout:
-                    #raise RuntimeError("Timed out")
+                    # raise RuntimeError("Timed out")
                     return self.MAX_VALUE
             pulselen = time.monotonic() - timestamp
             pulselen *= 1000000  # convert to us to match pulseio
         if pulselen >= 65535:
-            #raise RuntimeError("Timed out")
+            # raise RuntimeError("Timed out")
             return self.MAX_VALUE
 
         # positive pulse time, in seconds, times 340 meters/sec, then

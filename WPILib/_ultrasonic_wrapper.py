@@ -2,6 +2,7 @@ from . import _adafruit_hcsr04
 from . import _grove_ultrasonic
 import board
 
+
 class UltrasonicWrapper:
 
     """
@@ -23,7 +24,6 @@ class UltrasonicWrapper:
         """
         self._isLegacyMode = is_legacy
 
-
     def _possibly_instantiate_object(self):
         # If self._reflectanceObject is not defined, define it
 
@@ -33,16 +33,17 @@ class UltrasonicWrapper:
         if self._isLegacyMode:
             self._sonarObject = _grove_ultrasonic.GroveUltrasonic(board.GP28)
         else:
-            self._sonarObject = _adafruit_hcsr04.AdafruitUltrasonic(board.GP7, board.GP28)
-        
-    
+            self._sonarObject = _adafruit_hcsr04.AdafruitUltrasonic(
+                board.GP7, board.GP28
+            )
+
     def get_distance(self) -> float:
         """
-		Return the distance measured by the sensor in cm.
+                Return the distance measured by the sensor in cm.
         If the distance is too far, it returns a maximum value of 65535.
 
-		:return: Distance in centimeters
-		:rtype: float
-		"""
+                :return: Distance in centimeters
+                :rtype: float
+        """
         self._possibly_instantiate_object()
         return self._sonarObject.get_distance()

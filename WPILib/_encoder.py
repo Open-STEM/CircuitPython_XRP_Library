@@ -1,8 +1,7 @@
-
 import rotaryio
 
-class Encoder:
 
+class Encoder:
     def __init__(self, pinA, pinB, ticksPerRev, doFlip=False):
         self.ticksPerRev = ticksPerRev
         self.reverse = doFlip
@@ -20,7 +19,6 @@ class Encoder:
             return -r
         else:
             return r
-
 
     def setPos(self, pos: float = 0):
         """

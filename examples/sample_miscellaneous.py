@@ -13,28 +13,30 @@ def wait_for_button():
 
     # Wait until user command before running
     while not (buttons.is_GP20_pressed() or buttons.is_GP21_pressed()):
-        time.sleep(.01)
+        time.sleep(0.01)
 
     # Wait until user to release button before running
-    while (buttons.is_GP20_pressed() or buttons.is_GP21_pressed()):
-        time.sleep(.01)
+    while buttons.is_GP20_pressed() or buttons.is_GP21_pressed():
+        time.sleep(0.01)
 
     print("Button input found; Program starting")
+
 
 # Cycles through the 3 primary colors (for light) with decreasing brightness
 def test_leds():
     brightness = 1
     while brightness > 0:
         led.set_brightness(brightness)
-        led.set_color(255,0,0)
+        led.set_color(255, 0, 0)
         time.sleep(0.5)
-        led.set_color(0,255,0)
+        led.set_color(0, 255, 0)
         time.sleep(0.5)
-        led.set_color(0,0,255)
+        led.set_color(0, 0, 255)
         time.sleep(0.5)
         brightness -= 0.25
-    led.set_color(0,0,0)
+    led.set_color(0, 0, 0)
     led.set_brightness(0)
+
 
 # Test moving to both extremes of the servo motion and some middle value
 def test_servo():
@@ -45,18 +47,21 @@ def test_servo():
     servo.set_degrees(60)
     time.sleep(2)
 
+
 # Installation Verification Program
 def ivp():
     while not buttons.is_GP20_pressed() and not buttons.is_GP21_pressed():
-        print(f"Left Reflectance: {reflectance.get_left()}, Right Reflectance: {reflectance.get_right()}")
+        print(
+            f"Left Reflectance: {reflectance.get_left()}, Right Reflectance: {reflectance.get_right()}"
+        )
         time.sleep(0.1)
-    while (buttons.is_GP20_pressed() or buttons.is_GP21_pressed()):
-        time.sleep(.01)
+    while buttons.is_GP20_pressed() or buttons.is_GP21_pressed():
+        time.sleep(0.01)
     while not buttons.is_GP20_pressed() and not buttons.is_GP21_pressed():
         print(f"Ultrasonic Distance: {sonar.get_distance()}")
         time.sleep(0.1)
-    while (buttons.is_GP20_pressed() or buttons.is_GP21_pressed()):
-        time.sleep(.01)
+    while buttons.is_GP20_pressed() or buttons.is_GP21_pressed():
+        time.sleep(0.01)
     print("Testing Servo")
     test_servo()
     print("Testing LEDs")

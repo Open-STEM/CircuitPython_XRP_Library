@@ -1,6 +1,7 @@
 from . import _grove_ultrasonic
 
-class GroveReflectance():
+
+class GroveReflectance:
 
     """
     Supports the old reflectance sensor. A wrapper for the GroveUltrasonic class, because
@@ -8,9 +9,9 @@ class GroveReflectance():
     """
 
     def __init__(self, leftPin, rightPin):
-        self._leftReflectance = _grove_ultrasonic.GroveUltrasonic(leftPin, timeout = 1)
-        self._rightReflectance = _grove_ultrasonic.GroveUltrasonic(rightPin, timeout = 1)
-    
+        self._leftReflectance = _grove_ultrasonic.GroveUltrasonic(leftPin, timeout=1)
+        self._rightReflectance = _grove_ultrasonic.GroveUltrasonic(rightPin, timeout=1)
+
     # Implements AbstractReflectance
     def get_left(self) -> float:
         """
@@ -19,7 +20,7 @@ class GroveReflectance():
         :rtype: float
         """
         return self._leftReflectance.get_distance()
-    
+
     # Implements AbstractReflectance
     def get_right(self) -> float:
         """

@@ -7,14 +7,15 @@ class AnalogReflectance:
 
     def __init__(self, leftPin, rightPin):
         from analogio import AnalogIn
+
         self._leftReflectance = AnalogIn(leftPin)
         self._rightReflectance = AnalogIn(rightPin)
 
     def _get_value(self, sensor) -> float:
-    # def _get_value(self, sensor: AnalogIn) -> float:
+        # def _get_value(self, sensor: AnalogIn) -> float:
         MAX_ANALOG_VALUE: int = 65535
         return sensor.value / MAX_ANALOG_VALUE
-    
+
     # Implements AbstractReflectance
     def get_left(self) -> float:
         """
@@ -23,7 +24,7 @@ class AnalogReflectance:
         :rtype: float
         """
         return self._get_value(self._leftReflectance)
-    
+
     # Implements AbstractReflectance
     def get_right(self) -> float:
         """
