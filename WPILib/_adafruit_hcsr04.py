@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 """
-`adafruit_hcsr04`
+~adafruit_hcsr04~
 ====================================================
 
 A CircuitPython library for the HC-SR04 ultrasonic range sensor.
@@ -27,7 +27,7 @@ library.
 
   - Mike Mabey
   - Jerry Needell - modified to add timeout while waiting for echo (2/26/2018)
-  - ladyada - compatible with `distance` property standard, renaming, Pi compat
+  - ladyada - compatible with ~distance~ property standard, renaming, Pi compat
 """
 
 import time

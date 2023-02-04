@@ -19,6 +19,7 @@ class UltrasonicWrapper:
     def set_legacy_mode(self, is_legacy: bool = True) -> None:
         """
         Set whether the reflectance sensor is the old or the new analog one
+
         :param is_legacy: True if using the old version, False if using the new one
         :type is_legacy: bool
         """
@@ -38,8 +39,8 @@ class UltrasonicWrapper:
             )
 
     def get_distance(self) -> float:
-        """
-                Return the distance measured by the sensor in cm.
+        """Return the distance measured by the sensor in cm.
+
         If the distance is too far, it returns a maximum value of 65535.
 
                 :return: Distance in centimeters

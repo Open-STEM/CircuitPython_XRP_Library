@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """
-`grove_ultrasonic`
+~grove_ultrasonic~
 ====================================================
 
 A CircuitPython library for the Grove ultrasonic range sensor.
@@ -40,7 +40,7 @@ library.
 
   - Mike Mabey
   - Jerry Needell - modified to add timeout while waiting for echo (2/26/2018)
-  - ladyada - compatible with `distance` property standard, renaming, Pi compat
+  - ladyada - compatible with ~distance~ property standard, renaming, Pi compat
 """
 
 import time
