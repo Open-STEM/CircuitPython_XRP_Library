@@ -29,6 +29,15 @@ from . import _buttons
 from . import _encoded_motor
 from . import _led
 
+
+from ._drivetrain import Drivetrain
+from ._buttons import Buttons
+from ._reflectance_wrapper import ReflectanceWrapper
+from ._ultrasonic_wrapper import UltrasonicWrapper
+from ._led import RGBLED
+from ._servo import Servo
+
+
 import time
 
 
@@ -70,3 +79,20 @@ class XRPBot:
             drivetrain.set_legacy_mode(True)
             sonar.set_legacy_mode(True)
             reflectance.set_legacy_mode(True)
+
+
+try:
+    bot = XRPBot(False, 288)
+    drivetrain = bot.drivetrain
+    reflectance = bot.reflectance
+    sonar = bot.sonar
+    led = bot.led
+    servo = bot.servor
+    buttons = bot.buttons
+
+    def set_legacy_mode(is_legacy: bool = True):
+        drivetrain.set_legacy_mode(is_legacy)
+        sonar.set_legacy_mode(is_legacy)
+        reflectance.set_legacy_mode(is_legacy)
+except:
+    print("WARNING: Legacy API not setup")

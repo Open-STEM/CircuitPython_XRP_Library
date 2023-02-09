@@ -6,39 +6,38 @@
 
 .. automodule:: WPILib
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._adafruit_hcsr04
-    :members:
+High Level
+----------
 
-.. automodule:: WPILib._analog_reflectance
+.. autoclass:: WPILib.Drivetrain
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._buttons
-    :members:
+Outputs
+-------
 
-.. automodule:: WPILib._drivetrain
+.. autoclass:: WPILib.RGBLED
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._encoded_motor
+.. autoclass:: WPILib.Servo
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._encoder
-    :members:
+Inputs
+------
 
-.. automodule:: WPILib._grove_reflectance
+.. autoclass:: WPILib.Buttons
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._grove_ultrasonic
+.. autoclass:: WPILib.ReflectanceWrapper
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._led
+.. autoclass:: WPILib.UltrasonicWrapper
     :members:
+    :undoc-members:
 
-.. automodule:: WPILib._reflectance_wrapper
-    :members:
-
-.. automodule:: WPILib._servo
-    :members:
-
-.. automodule:: WPILib._ultrasonic_wrapper
-    :members:

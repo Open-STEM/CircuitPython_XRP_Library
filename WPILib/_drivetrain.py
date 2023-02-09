@@ -45,8 +45,8 @@ class Drivetrain:
         """
         Set the wheel diameter
 
-        :param diameter: The diameter of the drive wheels in centimeters
-        type diameter: float
+        :param: diameter: The diameter of the drive wheels in centimeters
+        :type diameter: float
         """
         self.wheelDiameter = diameter
 
@@ -55,7 +55,7 @@ class Drivetrain:
         Set the space between wheels
 
         :param wheel_spacing: The distance between the drive wheels in centimeters
-        type wheel_spacing: float
+        :type wheel_spacing: float
         """
         self.wheelSpacing = wheel_spacing
 
@@ -64,7 +64,7 @@ class Drivetrain:
         Set the space between wheels
 
         :param ticks_per_revolution: The number of encoder ticks per full revolution of the wheel
-        type ticks_per_revolution: int
+        :type ticks_per_revolution: int
         """
         self.leftMotor._set_encoder_ticks_per_rev(ticks_per_revolution)
         self.rightMotor._set_encoder_ticks_per_rev(ticks_per_revolution)
@@ -88,14 +88,14 @@ class Drivetrain:
         Go forward the specified distance in centimeters, and exit function when distance has been reached.
         Speed is bounded from -1 (reverse at full speed) to 1 (forward at full speed)
 
-        : param distance: The distance for the robot to travel (In Centimeters)
-        : type distance: float
-        : param speed: The speed for which the robot to travel (Bounded from -1 to 1). Default is half speed forward
-        : type speed: float
-        : param timeout: The amount of time before the robot stops trying to move forward and continues to the next step (In Seconds)
-        : type timeout: float
-        : return: if the distance was reached before the timeout
-        : rtype: bool
+        :param distance: The distance for the robot to travel (In Centimeters)
+        :type distance: float
+        :param speed: The speed for which the robot to travel (Bounded from -1 to 1). Default is half speed forward
+        :type speed: float
+        :param timeout: The amount of time before the robot stops trying to move forward and continues to the next step (In Seconds)
+        :type timeout: float
+        :return: if the distance was reached before the timeout
+        :rtype: bool
         """
         # ensure distance is always positive while speed could be either positive or negative
         if distance < 0:
@@ -143,14 +143,14 @@ class Drivetrain:
         Turn the robot some relative heading given in turnDegrees, and exit function when the robot has reached that heading.
         Speed is bounded from -1 (turn counterclockwise the relative heading at full speed) to 1 (turn clockwise the relative heading at full speed)
 
-        : param turnDegrees: The number of angle for the robot to turn (In Degrees)
-        : type turnDegrees: float
-        : param speed: The speed for which the robot to travel (Bounded from -1 to 1). Default is half speed forward.
-        : type speed: float
-        : param timeout: The amount of time before the robot stops trying to turn and continues to the next step (In Seconds)
-        : type timeout: float
-        : return: if the distance was reached before the timeout
-        : rtype: bool
+        :param turnDegrees: The number of angle for the robot to turn (In Degrees)
+        :type turnDegrees: float
+        :param speed: The speed for which the robot to travel (Bounded from -1 to 1). Default is half speed forward.
+        :type speed: float
+        :param timeout: The amount of time before the robot stops trying to turn and continues to the next step (In Seconds)
+        :type timeout: float
+        :return: if the distance was reached before the timeout
+        :rtype: bool
         """
 
         # ensure distance is always positive while speed could be either positive or negative
@@ -196,10 +196,10 @@ class Drivetrain:
         """
         Set the raw effort of both motors individually
 
-        : param leftEffort: The power (Bounded from -1 to 1) to set the left motor to.
-        : type leftEffort: float
-        : param rightEffort: The power (Bounded from -1 to 1) to set the right motor to.
-        : type rightEffort: float
+        :param leftEffort: The power (Bounded from -1 to 1) to set the left motor to.
+        :type leftEffort: float
+        :param rightEffort: The power (Bounded from -1 to 1) to set the right motor to.
+        :type rightEffort: float
         """
 
         self.leftMotor.setEffort(left_effort)
@@ -216,10 +216,10 @@ class Drivetrain:
         Set the position of the motors' encoders in degrees. Note that this does not actually move the motor but just recalibrates the stored encoder value.
         If only one encoder position is specified, the encoders for each motor will be set to that position.
 
-        : param leftDegrees: The distance to recalibrate the left encoder to.
-        : type leftDegrees: float
-        : param rightDegrees: The distance to recalibrate the left encoder to.
-        : type rightDegrees: float
+        :param leftDegrees: The distance to recalibrate the left encoder to.
+        :type leftDegrees: float
+        :param rightDegrees: The distance to recalibrate the left encoder to.
+        :type rightDegrees: float
         """
 
         self.leftMotor.setPos(left_degrees)
